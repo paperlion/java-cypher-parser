@@ -1,4 +1,4 @@
-# Java Cipher Query Parser
+# Java Cypher Query Parser
 
 ## Overview
 This Java project allows users to input a string of a Cypher query which is then parsed into Objects. Users can easily modify query properties such as variable names or attributes and convert the modified objects back into a string.
