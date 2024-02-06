@@ -22,12 +22,12 @@ public class Example {
 
         // Parse the Cypher query
         Parser parser = Parser.from(cypher);
-		    System.out.println(parser);
+	System.out.println(parser);
 
         // Get the part of the query
-    		Node n = parser.getMatches().get(0).getEdgeList().get(1).getTo();
-    		Property r = n.getProperties().get(0);
-    		System.out.println(r);
+    	Node n = parser.getMatches().get(0).getEdgeList().get(1).getTo();
+    	Property r = n.getProperties().get(0);
+    	System.out.println(r);
 
         // Modify a property of the query 
         r.setScaler(Scaler.from("2"));
