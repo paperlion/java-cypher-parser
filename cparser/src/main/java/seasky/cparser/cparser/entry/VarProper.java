@@ -3,6 +3,7 @@ package seasky.cparser.cparser.entry;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
@@ -12,15 +13,11 @@ import seasky.cparser.cparser.tool.Counter;
 @EqualsAndHashCode
 public class VarProper {
 //    final static public String pattern = "^(\\w+)\\.(.*)$";
-    Variable var;
-    PropertyName propName;
+	@NonNull Variable var;
+	@NonNull Property prop;
     
     public String toString() {
-        return toString(false);
-    }
-    
-    public String toString(boolean rmdbs) {
-        return var.toString() + "." + propName.toString(rmdbs);
+        return var.toString() + "." + prop.toString();
     }
     
     public static VarProper from(String string) throws CypherParseException {
@@ -32,7 +29,7 @@ public class VarProper {
         int flag = 0; // 0 means the variable name and 1 means waiting for the dot, and 2 means waiting for the property name
         
         Variable variable = null;
-        PropertyName property = null;
+        Property property = null;
         while (counter.get() < string.length()) {
             char c = string.charAt(counter.get());
             if (Character.isSpaceChar(c)) {
@@ -50,7 +47,7 @@ public class VarProper {
                 flag = 2;
             }
             else if (flag == 2) {
-                property = PropertyName.from(string, counter);
+                property = Property.from(string, counter);
                 break;
             }
             counter.inc();
@@ -62,7 +59,7 @@ public class VarProper {
         }
     }
     
-    public static VarProper from(Variable var, PropertyName prop)
+    public static VarProper from(Variable var, Property prop)
     {
         return new VarProper(var, prop);
     }

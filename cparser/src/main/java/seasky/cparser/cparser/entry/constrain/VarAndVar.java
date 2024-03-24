@@ -3,6 +3,7 @@ package seasky.cparser.cparser.entry.constrain;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import seasky.cparser.cparser.entry.VarProper;
 
@@ -10,12 +11,12 @@ import seasky.cparser.cparser.entry.VarProper;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=false)
 public class VarAndVar extends Constrain{
-    VarProper first;
-    Relation relation;
-    VarProper second;
+	@NonNull VarProper first;
+	@NonNull Relation relation;
+	@NonNull VarProper second;
     
-    public String toString(boolean rmdbs) {
-        return first.toString(rmdbs) + relation.toString() + second.toString(rmdbs);
+    public String toString() {
+        return first.toString() + relation.toString() + second.toString();
     }
     
     public VarAndVar reverse()

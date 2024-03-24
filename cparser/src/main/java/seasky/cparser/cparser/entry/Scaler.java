@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
@@ -19,7 +20,7 @@ public class Scaler {
     public final static String stringPattern = "'(.*)'|\"(.*)\"";
     public final static String pattern = "^(?:" + integerPattern + "|" + doublePattern + "|" + stringPattern + ")$";
     
-    String value;
+    @NonNull String value;
     
     enum Type { 
         INTEGER,
@@ -27,7 +28,7 @@ public class Scaler {
         STRING
     }
     
-    Type type;
+    @NonNull Type type;
     
     public Scaler(String string) throws CypherParseException {
         Pattern r = Pattern.compile(pattern);

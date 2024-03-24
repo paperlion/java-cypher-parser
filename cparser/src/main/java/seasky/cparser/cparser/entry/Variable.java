@@ -3,6 +3,7 @@ package seasky.cparser.cparser.entry;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
@@ -13,7 +14,7 @@ import seasky.cparser.cparser.tool.Counter;
 public class Variable {
 //    final static public String pattern = "^[a-zA-Z_]\\w*$";
     
-    String value;
+	@NonNull String value;
     
     public String toString() {
         return value;

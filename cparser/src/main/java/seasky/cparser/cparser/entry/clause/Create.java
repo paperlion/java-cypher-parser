@@ -15,14 +15,13 @@ import seasky.cparser.cparser.tool.Counter;
 
 @Getter @Setter
 @AllArgsConstructor
-public class Match extends Clause {
-    @NonNull List<Edge> edgeList;
-    
-    public static Match from(String string) throws CypherParseException {
+public class Create extends Clause{
+	@NonNull List<Edge> edgeList;
+	public static Create from(String string) throws CypherParseException {
         return from(string, Counter.build());
     }
     
-    public static Match from(String string, Counter counter) throws CypherParseException {
+    public static Create from(String string, Counter counter) throws CypherParseException {
         int flag = 0; //flag = 0 means nothing and waiting for a node, 1 means waiting for a edge
         
         int nodeCount = 0;
@@ -68,16 +67,16 @@ public class Match extends Clause {
             counter.inc();
         }
         if (flag != 1) {
-            throw new CypherParseException("unfinished match clause, expecting a node but got " + string.charAt(counter.get()));
+            throw new CypherParseException("unfinished CREATE clause, expecting a node but got " + string.charAt(counter.get()));
         }
-        return new Match(edgeList);  
+        return new Create(edgeList);  
     }
     
     public String toString()
     {
     	if (edgeList.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
-        sb.append("MATCH ");
+        sb.append("CREATE ");
         for (int i = 0; i < edgeList.size(); i++)
         {
             if (i != 0) {
@@ -93,12 +92,12 @@ public class Match extends Clause {
     
     public Keyword type()
     {
-    	return Keyword.MATCH;
+    	return Keyword.CREATE;
     }
     
-    public int size() {
-    	return edgeList.size();
-    }
+	public int size() {
+		return edgeList.size();
+	}
     
     /***
      * Get the edge by index, starting from 1. Index 0 will return the first void edge.

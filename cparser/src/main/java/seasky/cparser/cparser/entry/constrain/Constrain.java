@@ -7,10 +7,7 @@ import seasky.cparser.cparser.tool.Counter;
 
 public abstract class Constrain {
     final public static String pattern = "(\\w+\\.[\\w\\s`]+)([><]=?|=|IS NOT NULL)([\\w\\s\"\'\\.+-]+)";
-    public abstract String toString(boolean b);
-    public String toString() {
-        return toString(false);
-    };
+    public abstract String toString();
     
     public static Constrain from(String string) throws CypherParseException {
         return from(string, Counter.build());
