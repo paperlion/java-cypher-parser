@@ -1,4 +1,5 @@
 # Java Cypher Query Parser
+![icon_for_neo4java](https://github.com/user-attachments/assets/b72ebe70-f6ae-4e3f-8a7c-7fd4789c8d0f)
 
 ## Overview
 This Java project allows users to input a string of a Cypher query which is then parsed into Objects. Users can easily modify query properties such as variable names or attributes and convert the modified objects back into a string.
