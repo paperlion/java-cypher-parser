@@ -93,7 +93,7 @@ public class Edge {
 				;
 			} else if (c == '*' && flag < 3) {
 				flag = 3;
-				String pattern = "^\\*(?:(\\d*)..(\\d*))?";
+				String pattern = "^\\*(?:(\\d*)\\.\\.(\\d*))?";
 				Pattern r = Pattern.compile(pattern);
 				Matcher m = r.matcher(string.substring(counter.get()));
 				if (m.find()) {
