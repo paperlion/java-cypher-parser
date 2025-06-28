@@ -13,6 +13,8 @@ import lombok.Setter;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
 
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -36,7 +38,7 @@ public class Edge {
 						: "")
 				+ getLengthExpression(lenMin, lenMax)
 				+ (requirements != null && requirements.size() > 0
-						? "{" + String.join(",", requirements.stream().map(Requirement::toString).toList()) + "}"
+						? "{" + String.join(",", requirements.stream().map(Requirement::toString).collect(Collectors.toList())) + "}"
 						: "")
 				+ "]";
 	}

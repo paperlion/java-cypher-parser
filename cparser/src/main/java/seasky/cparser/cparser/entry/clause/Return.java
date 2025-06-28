@@ -12,6 +12,7 @@ import seasky.cparser.cparser.entry.VarProper;
 import seasky.cparser.cparser.exception.CypherIndexOutofBoundException;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -62,7 +63,7 @@ public class Return extends Clause{
 		if (varPropers.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
         sb.append("RETURN ");
-        sb.append(String.join(", ", varPropers.stream().map((v) -> v.toString()).toList()));
+        sb.append(String.join(", ", varPropers.stream().map((v) -> v.toString()).collect(Collectors.toList())));
 		return sb.toString();
 	}
 	

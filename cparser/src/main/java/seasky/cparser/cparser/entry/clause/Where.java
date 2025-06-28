@@ -12,6 +12,7 @@ import seasky.cparser.cparser.entry.constrain.Constrain;
 import seasky.cparser.cparser.exception.CypherIndexOutofBoundException;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -71,7 +72,7 @@ public class Where extends Clause{
 		if (constrains.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
         sb.append("WHERE ");
-        sb.append(String.join(" and ", constrains.stream().map((c) -> c.toString()).toList()));
+        sb.append(String.join(" and ", constrains.stream().map((c) -> c.toString()).collect(Collectors.toList())));
 		return sb.toString();
 	}
 	

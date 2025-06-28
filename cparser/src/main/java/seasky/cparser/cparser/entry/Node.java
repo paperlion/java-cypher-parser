@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import seasky.cparser.cparser.exception.CypherParseException;
 import seasky.cparser.cparser.tool.Counter;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -29,7 +30,7 @@ public class Node {
 				+ (types != null && types.size() > 0 ? types.stream().map(CType::toString).reduce("", String::concat)
 						: "")
 				+ (requirements != null && requirements.size() > 0
-						? "{" + String.join(",", requirements.stream().map(Requirement::toString).toList()) + "}"
+						? "{" + String.join(",", requirements.stream().map(Requirement::toString).collect(Collectors.toList())) + "}"
 						: "")
 				+ ")";
 	}
